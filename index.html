@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Tell Me About the Time...</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#127490" />
+
+  <link rel="icon" type="image/png" href="tmattlogo.png">
+  <link rel="apple-touch-icon" href="tmattlogo.png">
+
+  <style>
+    .circle-mode .home-button {
+      display: none !important;
+    }
+
+    :root {
+      --cream: #fff9f3;
+      --yellow: #f8b934;
+      --pink: #d94b7f;
+      --teal: #127490;
+      --coral: #e86f5c;
+      --mint: #9cc9be;
+      --ink: #3c3c3c;
+      --muted: #6b7f88;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+    }
+
+    a.home-button {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      z-index: 10002;
+    }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: block;
+      width: 170px;
+      max-width: 45vw;
+      height: auto;
+      border-radius: 24px;
+      margin: 2.25rem auto 1rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,.08);
+    }
+
+    h1 {
+      color: var(--teal);
+      font-size: clamp(1.65rem, 5vw, 2.2rem);
+      line-height: 1.15;
+      margin: .5rem auto;
+      font-weight: 800;
+    }
+
+    .tagline {
+      max-width: 620px;
+      margin: .5rem auto 1.5rem;
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* -------------------------
+       MAIN GENERATOR
+    ------------------------- */
+
+    .generator-card {
+      max-width: 760px;
+      margin: 1.5rem auto;
+      padding: 1.25rem;
+      background: var(--mint);
+      border-radius: 28px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.08);
+    }
+
+    .prompt-card {
+      background: var(--pink);
+      color: var(--cream);
+      border-radius: 20px;
+      min-height: 190px;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: inset 0 -4px 0 rgba(0,0,0,.08);
+    }
+
+    .prompt-label {
+      margin: 0 0 .8rem;
+      color: var(--yellow);
+      font-size: .95rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    #prompt {
+      margin: 0;
+      font-size: clamp(1.35rem, 5vw, 2rem);
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    #prompt.start-message {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .btns {
+      display: flex;
+      gap: .6rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 1rem auto;
+    }
+
+    button {
+      border: none;
+      padding: 1rem 1.2rem;
+      border-radius: 30px;
+      font-family: inherit;
+      font-size: 1.02rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+      transition:
+        transform .12s ease,
+        filter .12s ease;
+    }
+
+    button:hover {
+      filter: brightness(.96);
+      transform: translateY(-1px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button[disabled] {
+      opacity: .45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-main {
+      background: var(--pink);
+      color: #fff;
+      font-size: 1.12rem;
+      padding: 1.05rem 1.55rem;
+    }
+
+    .btn-nav {
+      background: var(--teal);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: #ffe9d6;
+      color: #6b3a28;
+    }
+
+    /* -------------------------
+       HOW TO PLAY
+    ------------------------- */
+
+    .how-to-play {
+      max-width: 760px;
+      margin: 2.25rem auto 0;
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.4rem 1.5rem;
+      box-shadow: 0 3px 12px rgba(0,0,0,.05);
+      text-align: left;
+    }
+
+    .how-to-play h2 {
+      margin: 0 0 .8rem;
+      color: var(--teal);
+      text-align: center;
+      font-size: 1.35rem;
+    }
+
+    .how-to-play p {
+      color: #555;
+      line-height: 1.55;
+      margin: .65rem 0;
+    }
+
+    .how-to-play strong {
+      color: var(--pink);
+    }
+
+    /* -------------------------
+       FAVORITES
+    ------------------------- */
+
+    #favWrap {
+      max-width: 760px;
+      margin: 2.25rem auto 0;
+      text-align: left;
+    }
+
+    #favHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    #favHeader h2 {
+      margin: 0;
+      color: var(--teal);
+      font-size: 1.25rem;
+    }
+
+    #favList {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .favItem {
+      background: #fff;
+      border: 1px solid #ffdcbf;
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    }
+
+    .favText {
+      font-size: .98rem;
+      line-height: 1.4;
+    }
+
+    .favActions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+
+    .iconBtn {
+      border: 0;
+      background: #ffe9d6;
+      color: #6b3a28;
+      padding: .45rem .7rem;
+      border-radius: 10px;
+      font-size: .85rem;
+      cursor: pointer;
+      box-shadow: none;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    footer {
+      font-size: .85rem;
+      color: #777;
+      margin: 3rem auto 1rem;
+      max-width: 760px;
+      line-height: 1.5;
+    }
+
+    /* -------------------------
+       TOAST
+    ------------------------- */
+
+    #toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      background: var(--teal);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.18);
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        opacity .25s ease,
+        transform .25s ease;
+      font-size: .95rem;
+      z-index: 9999;
+    }
+
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-4px);
+    }
+
+    /* -------------------------
+       MOBILE
+    ------------------------- */
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1.25rem;
+      }
+
+      .logo {
+        margin-top: 2.75rem;
+        width: 150px;
+      }
+
+      .generator-card {
+        padding: 1rem;
+        border-radius: 24px;
+      }
+
+      .prompt-card {
+        min-height: 180px;
+        padding: 1.6rem 1.15rem;
+      }
+
+      .favItem {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a
+    href="https://miawizz.github.io/php-app-hub/"
+    class="home-button"
+  >
+    ← Back to Hub
+  </a>
+
+  <main>
+
+    <img
+      src="tmattlogo.png"
+      alt="Tell Me About the Time logo"
+      class="logo"
+    />
+
+    <h1>TELL ME ABOUT THE TIME...</h1>
+
+    <p class="tagline">
+      Make up the story like it really happened!
+    </p>
+
+    <!-- GENERATOR -->
+
+    <section
+      class="generator-card"
+      aria-label="Tell Me About the Time prompt generator"
+    >
+
+      <div class="prompt-card">
+
+        <div class="prompt-label">
+          TELL ME ABOUT THE TIME...
+        </div>
+
+        <p
+          id="prompt"
+          class="start-message"
+        >
+          Tap the button below to get your first story prompt!
+        </p>
+
+      </div>
+
+      <div class="btns">
+        <button
+          class="btn-main"
+          id="btnNext"
+        >
+          Tell me about the time...
+        </button>
+      </div>
+
+      <div class="btns">
+        <button
+          class="btn-nav"
+          id="btnBack"
+        >
+          Back
+        </button>
+
+        <button
+          class="btn-nav"
+          id="btnFwd"
+        >
+          Forward
+        </button>
+      </div>
+
+      <div class="btns">
+        <button
+          id="btnSave"
+          class="btn-secondary"
+        >
+          Save to Favorites
+        </button>
+      </div>
+
+    </section>
+
+
+    <!-- HOW TO PLAY -->
+
+    <section class="how-to-play">
+
+      <h2>HOW TO PLAY</h2>
+
+      <p>
+        One person says,
+        <strong>“[Name]... tell me about the time...”</strong>
+        and taps the button to finish the sentence with a wild,
+        imaginative prompt that is clearly not real.
+      </p>
+
+      <p>
+        The other person immediately jumps into telling the story,
+        fully committing to the idea using that
+        <strong>“Yes, And”</strong> guiding improv principle.
+      </p>
+
+      <p>
+        The listener can ask questions along the way to help the
+        story grow!
+      </p>
+
+    </section>
+
+
+    <!-- FAVORITES -->
+
+    <section
+      id="favWrap"
+      aria-labelledby="favTitle"
+    >
+
+      <div id="favHeader">
+
+        <h2 id="favTitle">
+          Favorites
+        </h2>
+
+        <div
+          class="btns"
+          style="margin-top:0;"
+        >
+          <button
+            class="btn-secondary"
+            id="btnCopyAll"
+          >
+            Copy All
+          </button>
+
+          <button
+            class="btn-secondary"
+            id="btnClear"
+          >
+            Clear
+          </button>
+        </div>
+
+      </div>
+
+      <p
+        class="muted"
+        id="favEmpty"
+      >
+        No favorites yet. Save any prompts you love.
+      </p>
+
+      <ul id="favList"></ul>
+
+    </section>
+
+
+    <footer>
+      © 2026 Mia Wisinski, Playful Heart Parenting.
+      Thank you for supporting this work.
+    </footer>
+
+  </main>
+
+
+  <div
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+
+  <script>
+
+    /* =========================================================
+       PROMPTS
+       ========================================================= */
+
+    const prompts = [
+
+      "…a cow wandered into your backyard and you had to find its owner!",
+
+      "…you were about to bite into an orange and it started screaming!",
+
+      "…you drank so much lemonade you bounced onto the roof!",
+
+      "…your shoes ran away without you!",
+
+      "…you woke up and saw a warthog just sitting on the edge of your bed.",
+
+      "…you were in the park and a squirrel started throwing acorns at you!",
+
+      "…you accidentally wore the same pair of pants backwards for an entire week straight!",
+
+      "…you were watching baseball on TV and a baseball flew out of the screen and into your living room and you caught it!",
+
+      "…you looked down and realized your toe hair was so long you could jump rope with it!",
+
+      "…a duck followed you everywhere you went for an entire day!",
+
+      "…you bit into a candy bar and it tasted so good that you actually started lifting off the ground!",
+
+      "…you accidentally brought a penguin home from the zoo without realizing it!",
+
+      "…you sneezed so hard you flew backwards and made a hole in the wall!",
+
+      "…you opened your lunchbox and found a tiny dragon inside who’d clearly eaten all your food!",
+
+      "…someone thought you were a detective, so you just went with it and solved a mystery!",
+
+      "…you made friends with a raccoon who was up to no good!",
+
+      "…there was a teeny-tiny person in your cereal doing the backstroke!",
+
+      "…you accidentally got locked inside a toy store overnight!",
+
+      "…you found a magical button that made everything move in slow motion!",
+
+      "…you tried to talk but could only bark!",
+
+      "…you were watching your favorite movie and jumped into the TV to be part of it!",
+
+      "…you accidentally ate a cookie that made you invisible for an hour.",
+
+      "…you were so hungry you ate five 10-foot-long subway sandwiches.",
+
+      "…you woke up and your hair had grown overnight and it was literally spilling out onto the floor, out the door, and down the hallway!",
+
+      "…you found a real dinosaur egg in your closet!",
+
+      "…you couldn’t decide what to eat so you asked your refrigerator and it actually helped you decide!",
+
+      "…you were bouncing on a trampoline and you accidentally bounced all the way to the moon!",
+
+      "…a frog hopped out of your backpack and asked you to kiss it!",
+
+      "…you accidentally covered yourself in glow-in-the-dark paint, thinking it was lotion!",
+
+      "…you discovered a secret tunnel underneath your couch!",
+
+      "…you woke up and could suddenly understand everything your dog was saying!",
+
+      "…you were stretching your neck and just kept stretching and stretching until it was as long as a giraffe’s neck!",
+
+      "…you were blowing bubbles and you accidentally blew one so big it trapped your neighbor and was floating off into the sky!",
+
+      "…you found a real treasure map inside a library book!",
+
+      "…your feet forgot how to walk and would only skip!",
+
+      "…a beaver thought your leg was a log and kept trying to steal it.",
+
+      "…you were building a snowman and it ended up looking exactly like your favorite singer and everyone in town came to see!",
+
+      "…your pillow started telling you awful knock-knock jokes instead of letting you sleep!",
+
+      "…you opened the freezer and discovered it had magically been restocked with your favorite frozen treats, and no one had even gone to the store!",
+
+      "…you woke up and everything you touched turned into cheese!"
+
+    ];
+
+
+    /* =========================================================
+       STORAGE / SHUFFLE
+       ========================================================= */
+
+    const APP_NS = 'tmatt';
+
+    const K = (s) => `${APP_NS}_${s}`;
+
+    const KEY_VER   = K('ver');
+    const KEY_ORDER = K('order');
+    const KEY_IDX   = K('idx');
+    const KEY_HIST  = K('hist');
+    const KEY_HPOS  = K('hpos');
+    const KEY_FAVS  = K('favs');
+
+
+    function hashText(text) {
+
+      let hash = 0;
+
+      for (let i = 0; i < text.length; i++) {
+        hash =
+          (hash * 31 + text.charCodeAt(i)) >>> 0;
+      }
+
+      return hash.toString(36);
+    }
+
+
+    function shuffle(array) {
+
+      for (
+        let i = array.length - 1;
+        i > 0;
+        i--
+      ) {
+
+        const j =
+          Math.floor(
+            Math.random() * (i + 1)
+          );
+
+        [
+          array[i],
+          array[j]
+        ] = [
+          array[j],
+          array[i]
+        ];
+      }
+
+      return array;
+    }
+
+
+    function freshOrder(avoidIdx) {
+
+      const order =
+        shuffle(
+          Array.from(
+            { length: prompts.length },
+            (_, i) => i
+          )
+        );
+
+      /*
+       Prevent the first prompt in a newly
+       shuffled deck from immediately repeating
+       the final prompt from the previous deck.
+      */
+
+      if (
+        avoidIdx != null &&
+        prompts.length > 1 &&
+        order[0] === avoidIdx
+      ) {
+
+        const k =
+          1 +
+          Math.floor(
+            Math.random() *
+            (order.length - 1)
+          );
+
+        [
+          order[0],
+          order[k]
+        ] = [
+          order[k],
+          order[0]
+        ];
+      }
+
+      return order;
+    }
+
+
+    const PROMPTS_VERSION =
+      hashText(
+        JSON.stringify(prompts)
+      );
+
+
+    function saveState(state) {
+
+      localStorage.setItem(
+        KEY_VER,
+        PROMPTS_VERSION
+      );
+
+      localStorage.setItem(
+        KEY_ORDER,
+        JSON.stringify(state.order)
+      );
+
+      localStorage.setItem(
+        KEY_IDX,
+        String(state.idx)
+      );
+
+      localStorage.setItem(
+        KEY_HIST,
+        JSON.stringify(state.history)
+      );
+
+      localStorage.setItem(
+        KEY_HPOS,
+        String(state.hpos)
+      );
+    }
+
+
+    function loadState() {
+
+      const version =
+        localStorage.getItem(KEY_VER);
+
+      let state = {
+        order: null,
+        idx: 0,
+        history: [],
+        hpos: 0
+      };
+
+
+      if (version === PROMPTS_VERSION) {
+
+        try {
+
+          state.order =
+            JSON.parse(
+              localStorage.getItem(KEY_ORDER)
+              || 'null'
+            );
+
+          state.idx =
+            parseInt(
+              localStorage.getItem(KEY_IDX)
+              || '0',
+              10
+            ) || 0;
+
+          state.history =
+            JSON.parse(
+              localStorage.getItem(KEY_HIST)
+              || '[]'
+            );
+
+          state.hpos =
+            parseInt(
+              localStorage.getItem(KEY_HPOS)
+              || String(state.history.length),
+              10
+            ) || state.history.length;
+
+        } catch (error) {
+          console.log(
+            'Could not restore app state.',
+            error
+          );
+        }
+      }
+
+
+      if (
+        !Array.isArray(state.order) ||
+        state.order.length !== prompts.length
+      ) {
+
+        state.order =
+          freshOrder(null);
+
+        state.idx = 0;
+        state.history = [];
+        state.hpos = 0;
+
+      } else {
+
+        state.idx =
+          Math.min(
+            Math.max(0, state.idx),
+            Math.max(
+              0,
+              state.order.length - 1
+            )
+          );
+
+        state.history =
+          state.history.filter(
+            n =>
+              Number.isInteger(n) &&
+              n >= 0 &&
+              n < prompts.length
+          );
+
+        state.hpos =
+          Math.min(
+            Math.max(0, state.hpos),
+            state.history.length
+          );
+      }
+
+      saveState(state);
+
+      return state;
+    }
+
+
+    let STATE = loadState();
+
+
+    /* =========================================================
+       ELEMENTS
+       ========================================================= */
+
+    const elPrompt =
+      document.getElementById('prompt');
+
+    const btnNext =
+      document.getElementById('btnNext');
+
+    const btnBack =
+      document.getElementById('btnBack');
+
+    const btnFwd =
+      document.getElementById('btnFwd');
+
+    const btnSave =
+      document.getElementById('btnSave');
+
+    const favListEl =
+      document.getElementById('favList');
+
+    const favEmptyEl =
+      document.getElementById('favEmpty');
+
+    const btnCopyAll =
+      document.getElementById('btnCopyAll');
+
+    const btnClear =
+      document.getElementById('btnClear');
+
+    const toastEl =
+      document.getElementById('toast');
+
+
+    /* =========================================================
+       PROMPT DISPLAY
+       ========================================================= */
+
+    function show(index) {
+
+      elPrompt.classList.remove(
+        'start-message'
+      );
+
+      elPrompt.textContent =
+        prompts[index];
+    }
+
+
+    function updateNav() {
+
+      btnBack.disabled =
+        STATE.hpos <= 1;
+
+      btnFwd.disabled =
+        STATE.hpos >=
+        STATE.history.length;
+    }
+
+
+    function currentIndex() {
+
+      if (
+        !STATE.history.length ||
+        STATE.hpos === 0
+      ) {
+        return null;
+      }
+
+      if (
+        STATE.hpos ===
+        STATE.history.length
+      ) {
+        return STATE.history[
+          STATE.history.length - 1
+        ];
+      }
+
+      return STATE.history[
+        STATE.hpos - 1
+      ];
+    }
+
+
+    function pickNextFromDeck() {
+
+      let {
+        order,
+        idx
+      } = STATE;
+
+      const next =
+        order[idx];
+
+      idx++;
+
+
+      if (idx >= order.length) {
+
+        const avoid = next;
+
+        order =
+          freshOrder(avoid);
+
+        idx = 0;
+      }
+
+
+      STATE.order = order;
+      STATE.idx = idx;
+
+      return next;
+    }
+
+
+    function next() {
+
+      /*
+       If the user went backward in history,
+       remove the abandoned "forward" path.
+      */
+
+      if (
+        STATE.hpos <
+        STATE.history.length
+      ) {
+        STATE.history.splice(
+          STATE.hpos
+        );
+      }
+
+
+      const pick =
+        pickNextFromDeck();
+
+
+      STATE.history.push(pick);
+
+
+      if (
+        STATE.history.length > 500
+      ) {
+        STATE.history.splice(
+          0,
+          STATE.history.length - 500
+        );
+      }
+
+
+      STATE.hpos =
+        STATE.history.length;
+
+
+      elPrompt.classList.remove(
+        'start-message'
+      );
+
+      elPrompt.textContent =
+        'Here you go...';
+
+
+      setTimeout(() => {
+
+        show(pick);
+
+        updateNav();
+        saveState(STATE);
+        updateSaveBtn();
+
+      }, 250);
+    }
+
+
+    function back() {
+
+      if (STATE.hpos > 1) {
+
+        STATE.hpos -= 1;
+
+        show(
+          STATE.history[
+            STATE.hpos - 1
+          ]
+        );
+
+        updateNav();
+        saveState(STATE);
+        updateSaveBtn();
+      }
+    }
+
+
+    function forward() {
+
+      if (
+        STATE.hpos <
+        STATE.history.length
+      ) {
+
+        const index =
+          STATE.history[
+            STATE.hpos
+          ];
+
+        STATE.hpos += 1;
+
+        show(index);
+
+        updateNav();
+        saveState(STATE);
+        updateSaveBtn();
+      }
+    }
+
+
+    /* =========================================================
+       FAVORITES
+       ========================================================= */
+
+    function loadFavs() {
+
+      try {
+
+        return JSON.parse(
+          localStorage.getItem(KEY_FAVS)
+          || '[]'
+        );
+
+      } catch {
+
+        return [];
+      }
+    }
+
+
+    function saveFavs(list) {
+
+      localStorage.setItem(
+        KEY_FAVS,
+        JSON.stringify(list)
+      );
+    }
+
+
+    let FAVORITES =
+      loadFavs();
+
+
+    function isFav(index) {
+
+      return FAVORITES.includes(
+        index
+      );
+    }
+
+
+    function updateSaveBtn() {
+
+      const index =
+        currentIndex();
+
+
+      if (index == null) {
+
+        btnSave.disabled = true;
+
+        btnSave.textContent =
+          'Save to Favorites';
+
+        return;
+      }
+
+
+      btnSave.disabled = false;
+
+      btnSave.textContent =
+        isFav(index)
+          ? 'Saved'
+          : 'Save to Favorites';
+    }
+
+
+    function saveCurrent() {
+
+      const index =
+        currentIndex();
+
+      if (index == null) return;
+
+
+      if (!isFav(index)) {
+
+        FAVORITES.push(index);
+
+        saveFavs(FAVORITES);
+
+        renderFavs();
+
+        toast(
+          'Saved to favorites'
+        );
+
+        updateSaveBtn();
+
+      } else {
+
+        toast(
+          'Already in favorites'
+        );
+      }
+    }
+
+
+    function removeFav(index) {
+
+      FAVORITES =
+        FAVORITES.filter(
+          n => n !== index
+        );
+
+      saveFavs(FAVORITES);
+
+      renderFavs();
+
+      updateSaveBtn();
+
+      toast('Removed');
+    }
+
+
+    function renderFavs() {
+
+      favListEl.innerHTML = '';
+
+
+      if (!FAVORITES.length) {
+
+        favEmptyEl.style.display =
+          'block';
+
+        return;
+      }
+
+
+      favEmptyEl.style.display =
+        'none';
+
+
+      FAVORITES.forEach(index => {
+
+        const li =
+          document.createElement('li');
+
+        li.className =
+          'favItem';
+
+
+        const text =
+          document.createElement('div');
+
+        text.className =
+          'favText';
+
+        text.textContent =
+          'Tell me about the time ' +
+          prompts[index];
+
+
+        const actions =
+          document.createElement('div');
+
+        actions.className =
+          'favActions';
+
+
+        const copyBtn =
+          document.createElement(
+            'button'
+          );
+
+        copyBtn.className =
+          'iconBtn';
+
+        copyBtn.textContent =
+          'Copy';
+
+        copyBtn.onclick = () => {
+
+          navigator.clipboard.writeText(
+            'Tell me about the time ' +
+            prompts[index]
+          );
+
+          toast('Copied');
+        };
+
+
+        const delBtn =
+          document.createElement(
+            'button'
+          );
+
+        delBtn.className =
+          'iconBtn';
+
+        delBtn.textContent =
+          'Remove';
+
+        delBtn.onclick =
+          () => removeFav(index);
+
+
+        actions.appendChild(
+          copyBtn
+        );
+
+        actions.appendChild(
+          delBtn
+        );
+
+        li.appendChild(text);
+
+        li.appendChild(actions);
+
+        favListEl.appendChild(li);
+      });
+    }
+
+
+    function copyAllFavs() {
+
+      if (!FAVORITES.length) {
+
+        toast(
+          'No favorites to copy'
+        );
+
+        return;
+      }
+
+
+      const text =
+        FAVORITES
+          .map(
+            index =>
+              'Tell me about the time ' +
+              prompts[index]
+          )
+          .join('\n');
+
+
+      navigator.clipboard.writeText(
+        text
+      );
+
+      toast(
+        'Favorites copied'
+      );
+    }
+
+
+    function clearFavs() {
+
+      FAVORITES = [];
+
+      saveFavs(FAVORITES);
+
+      renderFavs();
+
+      updateSaveBtn();
+
+      toast(
+        'Favorites cleared'
+      );
+    }
+
+
+    /* =========================================================
+       TOAST
+       ========================================================= */
+
+    let toastTimer = null;
+
+
+    function toast(message) {
+
+      toastEl.textContent =
+        message;
+
+      toastEl.classList.add(
+        'show'
+      );
+
+      clearTimeout(
+        toastTimer
+      );
+
+      toastTimer =
+        setTimeout(
+          () =>
+            toastEl.classList.remove(
+              'show'
+            ),
+          1500
+        );
+    }
+
+
+    /* =========================================================
+       EVENTS
+       ========================================================= */
+
+    btnNext.addEventListener(
+      'click',
+      next
+    );
+
+    btnBack.addEventListener(
+      'click',
+      back
+    );
+
+    btnFwd.addEventListener(
+      'click',
+      forward
+    );
+
+    btnSave.addEventListener(
+      'click',
+      saveCurrent
+    );
+
+    btnCopyAll.addEventListener(
+      'click',
+      copyAllFavs
+    );
+
+    btnClear.addEventListener(
+      'click',
+      clearFavs
+    );
+
+
+    document.addEventListener(
+      'keydown',
+      event => {
+
+        if (event.key === 'Enter') {
+          next();
+        }
+
+        if (
+          event.key ===
+          'ArrowLeft'
+        ) {
+          back();
+        }
+
+        if (
+          event.key ===
+          'ArrowRight'
+        ) {
+          forward();
+        }
+
+        if (
+          event.key.toLowerCase()
+          === 's'
+        ) {
+          saveCurrent();
+        }
+      }
+    );
+
+
+    /* =========================================================
+       INITIALIZE
+       ========================================================= */
+
+    if (STATE.history.length) {
+
+      STATE.hpos =
+        STATE.history.length;
+
+      show(
+        STATE.history[
+          STATE.history.length - 1
+        ]
+      );
+    }
+
+
+    updateNav();
+    renderFavs();
+    updateSaveBtn();
+    saveState(STATE);
+
+
+    /* =========================================================
+       CIRCLE MODE
+       ========================================================= */
+
+    (function () {
+
+      const isCircle =
+        new URLSearchParams(
+          window.location.search
+        ).get('circle') === '1';
+
+
+      if (isCircle) {
+
+        document.body.classList.add(
+          'circle-mode'
+        );
+      }
+
+    })();
+
+  </script>
+
+</body>
+</html>
