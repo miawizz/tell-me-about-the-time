@@ -1,0 +1,15 @@
+{
+  "name": "Tell Me About the Time...",
+  "short_name": "Tell Me About...",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fff9f3",
+  "theme_color": "#127490",
+  "icons": [
+    {
+      "src": "tmattlogo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
