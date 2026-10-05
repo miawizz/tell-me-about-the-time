@@ -540,89 +540,157 @@
        ========================================================= */
 
     const prompts = [
-
-      "…a cow wandered into your backyard and you had to find its owner!",
-
-      "…you were about to bite into an orange and it started screaming!",
-
-      "…you drank so much lemonade you bounced onto the roof!",
-
-      "…your shoes ran away without you!",
-
-      "…you woke up and saw a warthog just sitting on the edge of your bed.",
-
-      "…you were in the park and a squirrel started throwing acorns at you!",
-
-      "…you accidentally wore the same pair of pants backwards for an entire week straight!",
-
-      "…you were watching baseball on TV and a baseball flew out of the screen and into your living room and you caught it!",
-
-      "…you looked down and realized your toe hair was so long you could jump rope with it!",
-
-      "…a duck followed you everywhere you went for an entire day!",
-
-      "…you bit into a candy bar and it tasted so good that you actually started lifting off the ground!",
-
-      "…you accidentally brought a penguin home from the zoo without realizing it!",
-
-      "…you sneezed so hard you flew backwards and made a hole in the wall!",
-
-      "…you opened your lunchbox and found a tiny dragon inside who’d clearly eaten all your food!",
-
-      "…someone thought you were a detective, so you just went with it and solved a mystery!",
-
-      "…you made friends with a raccoon who was up to no good!",
-
-      "…there was a teeny-tiny person in your cereal doing the backstroke!",
-
-      "…you accidentally got locked inside a toy store overnight!",
-
-      "…you found a magical button that made everything move in slow motion!",
-
-      "…you tried to talk but could only bark!",
-
-      "…you were watching your favorite movie and jumped into the TV to be part of it!",
-
-      "…you accidentally ate a cookie that made you invisible for an hour.",
-
-      "…you were so hungry you ate five 10-foot-long subway sandwiches.",
-
-      "…you woke up and your hair had grown overnight and it was literally spilling out onto the floor, out the door, and down the hallway!",
-
-      "…you found a real dinosaur egg in your closet!",
-
-      "…you couldn’t decide what to eat so you asked your refrigerator and it actually helped you decide!",
-
-      "…you were bouncing on a trampoline and you accidentally bounced all the way to the moon!",
-
-      "…a frog hopped out of your backpack and asked you to kiss it!",
-
-      "…you accidentally covered yourself in glow-in-the-dark paint, thinking it was lotion!",
-
-      "…you discovered a secret tunnel underneath your couch!",
-
-      "…you woke up and could suddenly understand everything your dog was saying!",
-
-      "…you were stretching your neck and just kept stretching and stretching until it was as long as a giraffe’s neck!",
-
-      "…you were blowing bubbles and you accidentally blew one so big it trapped your neighbor and was floating off into the sky!",
-
-      "…you found a real treasure map inside a library book!",
-
-      "…your feet forgot how to walk and would only skip!",
-
-      "…a beaver thought your leg was a log and kept trying to steal it.",
-
-      "…you were building a snowman and it ended up looking exactly like your favorite singer and everyone in town came to see!",
-
-      "…your pillow started telling you awful knock-knock jokes instead of letting you sleep!",
-
-      "…you opened the freezer and discovered it had magically been restocked with your favorite frozen treats, and no one had even gone to the store!",
-
-      "…you woke up and everything you touched turned into cheese!"
-
-    ];
-
+  "…a cow wandered into your backyard and you had to find its owner!",
+  "…you were about to bite into an orange and it started screaming!",
+  "…you drank so much lemonade you bounced onto the roof!",
+  "…your shoes ran away without you!",
+  "…you woke up and saw a warthog just sitting on the edge of your bed.",
+  "…you were in the park and a squirrel started throwing acorns at you!",
+  "…you accidentally wore the same pair of pants backwards for an entire week straight!",
+  "…you were watching baseball on TV and a baseball flew out of the screen and into your living room and you caught it!",
+  "…you looked down and realized your toe hair was so long you could jump rope with it!",
+  "…a duck followed you everywhere you went for an entire day!",
+  "…you bit into a candy bar and it tasted so good that you actually started lifting off the ground!",
+  "…you accidentally brought a penguin home from the zoo without realizing it!",
+  "…you sneezed so hard you flew backwards and made a hole in the wall!",
+  "…you opened your lunchbox and found a tiny dragon inside who’d clearly eaten all your food!",
+  "…someone thought you were a detective, so you just went with it and solved a mystery!",
+  "…you made friends with a raccoon who was up to no good!",
+  "…there was a teeny-tiny person in your cereal doing the backstroke!",
+  "…you accidentally got locked inside a toy store overnight!",
+  "…you found a magical button that made everything move in slow motion!",
+  "…you tried to talk but could only bark!",
+  "…you were watching your favorite movie and jumped into the TV to be part of it!",
+  "…you accidentally ate a cookie that made you invisible for an hour.",
+  "…you were so hungry you ate five 10-foot-long subway sandwiches.",
+  "…you woke up and your hair had grown overnight and it was literally spilling out onto the floor, out the door, and down the hallway!",
+  "…you found a real dinosaur egg in your closet!",
+  "…you couldn’t decide what to eat so you asked your refrigerator and it actually helped you decide!",
+  "…you were bouncing on a trampoline and you accidentally bounced all the way to the moon!",
+  "…a frog hopped out of your backpack and asked you to kiss it!",
+  "…you accidentally covered yourself in glow-in-the-dark paint, thinking it was lotion!",
+  "…you discovered a secret tunnel underneath your couch!",
+  "…you woke up and could suddenly understand everything your dog was saying!",
+  "…you were stretching your neck and just kept stretching and stretching until it was as long as a giraffe’s neck!",
+  "…you were blowing bubbles and you accidentally blew one so big it trapped your neighbor and was floating off into the sky!",
+  "…you found a real treasure map inside a library book!",
+  "…your feet forgot how to walk and would only skip!",
+  "…a beaver thought your leg was a log and kept trying to steal it.",
+  "…you were building a snowman and it ended up looking exactly like your favorite singer and everyone in town came to see!",
+  "…your pillow started telling you awful knock-knock jokes instead of letting you sleep!",
+  "…you opened the freezer and discovered it had magically been restocked with your favorite frozen treats, and no one had even gone to the store!",
+  "…you woke up and everything you touched turned into cheese.",
+  "…a goat ate your favorite toy and you had to figure out how to get it back!",
+  "…you were taking a bubble bath and the bubbles magically just kept getting bigger and bigger.",
+  "…you ate four whole watermelons in one afternoon.",
+  "…you accidentally won the international pogo stick championship.",
+  "…you rode on the back of a grizzly bear!",
+  "…you actually found the end of the rainbow and got to walk through it!",
+  "…you found a french fry in your belly button.",
+  "…you tooted so loudly that all the windows in your house shattered.",
+  "…you looked in the mirror and realized you’d grown a beard overnight.",
+  "…you built an entire house out of string cheese.",
+  "…you and your bestie bungee-jumped on national television.",
+  "…you planted a jelly bean and a giant candy plant grew overnight!",
+  "…you made friends with a blue whale.",
+  "…your shadow stopped copying you and started doing whatever it wanted!",
+  "…you couldn’t find your glasses so you invented your own using magnifying glasses.",
+  "…everyone was calling you “Your Majesty” all day wherever you went and you didn’t know why.",
+  "…you wore spaghetti on your head all day as a wig.",
+  "…you woke up and discovered you had grown a tail!",
+  "…you found a koi fish swimming in your bathtub.",
+  "…your sandwich started flapping its bread slices like wings and flew up off your plate.",
+  "…you accidentally mailed yourself to another country.",
+  "…your ice cream cone was growling at you every time you tried to take a lick.",
+  "…your left foot started growing bigger and bigger throughout the day.",
+  "…you became famous for doing amazing duck quacking impressions.",
+  "…you woke up and everything in your house was upside down!",
+  "…you blew your nose and it honked like an actual car horn.",
+  "…you were reading your favorite book and suddenly the characters started crawling out of the page and into real life!",
+  "…you rode on a camel’s back across the desert just to get to a donut shop.",
+  "…you accidentally got shrunken down to the size of an ant!",
+  "…your feet were so stinky that they melted holes in your socks!",
+  "…you won the world record for most burps in one minute!",
+  "…you found a magic crayon that made anything you draw come to life!",
+  "…you had the hiccups so bad they made you jump three feet into the air every time you hiccuped!",
+  "…you walked into a dinosaur museum and found the secret room where there was a real-life baby dino!",
+  "…your cheek started itching and you realized you’d grown whiskers!",
+  "…you slipped on a banana peel but instead of falling on the ground you flew up in the air and kept flying!",
+  "…you accidentally adopted a baby mountain lion!",
+  "…you woke up and all your clothes had shrunk!",
+  "…you walked on a tightrope in the circus!",
+  "…you pointed a remote control at someone and it actually paused them!",
+  "…a baby goose thought you were their mama!",
+  "…you gave your friend a bite of your food over the phone!",
+  "…you got your face painted like a monster at a festival and it looked so real that everyone in town was running away screaming!",
+  "…a giant came to your house and asked if he could use your bathroom!",
+  "…you sneezed and accidentally blew a snot bubble so big that it filled up the whole room!",
+  "…you roasted the most perfect marshmallow in the history of marshmallow roasting and it was too beautiful to eat!",
+  "…you opened your freezer and found a penguin in there cooling off!",
+  "…you sat down on the toilet and it growled at you!",
+  "…you rode a unicycle all the way across the country!",
+  "…you looked up and it was raining gummy bears!",
+  "…you lost a race to a snail!",
+  "…you were hired to paint a mural of your own face on the side of a building downtown!",
+  "…you accidentally tie-dyed all the clothes in your house!",
+  "…you built a life-size sculpture of a stegosaurus out of mashed potatoes.",
+  "…that day you suddenly got super-hearing powers and could hear everything extra well!",
+  "…you accidentally took a bath in blue food coloring.",
+  "…you helped an alligator who had a toothache!",
+  "…you accidentally did a double backflip!",
+  "…you were flying a kite and it was so windy the kite took you flying with it!",
+  "…you found a family of gnomes living under your bed.",
+  "…you picked up a toy magic wand but then it actually worked.",
+  "…you tap danced on live television.",
+  "…you laughed so hard that the ground started rumbling!",
+  "…your hair was changing colors by itself all day!",
+  "…you had to babysit a wild pig!",
+  "…you coughed and a butterfly flew out of your mouth!",
+  "…you decided to change your name to “Frimdiddle Dumpcakes.”",
+  "…you were flossing and found a whole banana stuck between your teeth.",
+  "…your hands were so sticky from playing with slime that you were able to crawl up the wall like a gecko!",
+  "…you opened a bag of chips and one of the chips yelled, “HEY! Put me down!”",
+  "…you woke up and your ears were so big they were hanging all the way down to your knees!",
+  "…you went to put on your shoes and found two baby mice sleeping inside them.",
+  "…you ate a piece of broccoli and immediately grew three inches taller!",
+  "…you were walking down the sidewalk when a pigeon landed on your head and refused to leave.",
+  "…you accidentally entered a yodeling contest and won first place!",
+  "…you opened the front door and there was a llama standing there with a package for you.",
+  "…you French braided your nose hair!",
+  "…you went bowling and rolled the ball so hard it went straight through the wall!",
+  "…you got on an elevator and instead of going up, it went sideways!",
+  "…you accidentally became the lead singer of a band even though you didn’t know any of their songs!",
+  "…you found a 100-pound tortoise in your kitchen.",
+  "…you accidentally ate the world’s spiciest pepper.",
+  "…you accidentally brushed your teeth with mayonnaise.",
+  "…you went to sit on the couch and it yelled, “OUCH!”",
+  "…you learned how to grow an instant mustache by wiggling your nose.",
+  "…you accidentally swallowed a kazoo and hiccuped music for the rest of the day!",
+  "…you tried on a pair of roller skates and didn’t realize they had built-in rocket boosters!",
+  "…you ate a bowl of soup that was so spicy, steam started shooting out of your ears!",
+  "…you found buried treasure in your front yard while you were planting flowers!",
+  "…you accidentally won a lifetime supply of Swiss cheese!",
+  "…you were eating corn on the cob and the corn started popping into popcorn right in your mouth!",
+  "…you went outside and discovered someone had covered your entire yard in whipped cream.",
+  "…you built a sandcastle so enormous that you could actually go inside it!",
+  "…you accidentally became the mascot for a professional sports team.",
+  "…you started a fire by rubbing your bare hands together super fast!",
+  "…you went to throw a paper airplane and it flew so far that it came back the next day with a postcard attached.",
+  "…you found a message in a bottle on the beach from 500 years ago!",
+  "…you found a $100 bill inside an old pair of shoes you hadn’t worn in years!",
+  "…you found a diamond ring buried in your sandbox!",
+  "…you reached into your coat pocket and found it completely filled with gold coins!",
+  "…you were the one-millionth person to walk into a grocery store and they gave you free groceries for a year!",
+  "…you bought a mystery box for one dollar and found real gold inside!",
+  "…you threw a coin into a fountain, made a wish, and it came true five minutes later!",
+  "…you opened a fortune cookie and it told you exactly what was going to happen next!",
+  "…you won a year’s supply of donuts by competing in a disco dancing competition!",
+  "…someone named their new pizza restaurant after you!",
+  "…you found a magical vending machine that could give you any snack you could imagine!",
+  "…you went to an arcade and every game you played gave you the jackpot!",
+  "…you went to buy one cupcake and found out you were customer number 10,000, so they gave you 10,000 cupcakes!",
+  "…you built a life-size statue of yourself out of Play-Doh and everyone thought it was actually you!"
+];
 
     /* =========================================================
        STORAGE / SHUFFLE
